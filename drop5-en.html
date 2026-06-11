@@ -380,7 +380,7 @@ async function checkGameOver() {
   gameOver = true;
   document.getElementById('final-score').textContent = score.toLocaleString();
   document.getElementById('save-score-btn').disabled = false;
-  document.getElementById('save-score-btn').textContent = '💾 점수 저장';
+  document.getElementById('save-score-btn').textContent = '💾 score save';
   document.getElementById('overlay').classList.add('show');
 }
 
@@ -446,22 +446,22 @@ document.getElementById('restart-btn').addEventListener('click', init);
 
 document.getElementById('save-score-btn').addEventListener('click', async function() {
   this.disabled = true;
-  this.textContent = '저장 중...';
+  this.textContent = 'loading...';
   const myRank = await saveAndShowRank();
-  this.textContent = myRank ? `✅ 저장 완료 · 🏆 ${myRank}위` : '✅ 저장 완료';
+  this.textContent = myRank ? `✅ saved · 🏆 Rank ${myRank}` : '✅ Saved';
 });
 
 document.getElementById('ranking-btn').addEventListener('click', async function() {
   const area = document.getElementById('ranking-area');
   if (area.style.display === 'block') {
     area.style.display = 'none';
-    this.textContent = '🏆 순위 보기';
+    this.textContent = '🏆 Leaderboard';
     return;
   }
-  this.textContent = '불러오는 중...';
+  this.textContent = 'Loading...';
   await loadRanking();
   area.style.display = 'block';
-  this.textContent = '🏆 순위 닫기';
+  this.textContent = '🏆 Close Leaderboard';
 });
 
 </script>
