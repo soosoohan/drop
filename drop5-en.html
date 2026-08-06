@@ -97,11 +97,18 @@
   .queue-card.active { transform: scale(1.1); box-shadow: 0 0 12px rgba(240,192,64,0.6); }
   #col-buttons { display: flex; gap: 4px; margin-bottom: 4px; }
   .col-btn {
-    width: 62px; height: 55px; border-radius: 8px; border: none; background: #2a2a4a;
-    color: #db74bc; font-size: 1.6rem; cursor: pointer; transition: all 0.15s ease; line-height: 1; padding: 0;
+    width: 62px; height: 55px; border-radius: 8px; border: none;
+    background: #2a2a4a; color: #db74bc; font-size: 1.6rem;
+    cursor: pointer; transition: background 0.2s;
   }
-  .col-btn.selected { background: #b3933e; color: #1a1a2e; font-size: 1.8rem; transform: translateY(4px); box-shadow: 0 4px 12px rgba(240,192,64,0.5); }
-  .col-btn:hover:not(.selected) { background: #3a3a6a; color: #db74bc; }
+  .col-btn.selected {
+    background: #b39333e;
+    color: #1a1a2e;
+    transform: translateY(4px);
+    box-shadow: 0 4px 12px rgba(240,192,64,0.5);
+}
+  .col-btn:hover:not(.selected) { background: #3a3a6a; color: #db74b4; }
+  
   #grid {
     display: grid; grid-template-columns: repeat(5, 62px); grid-template-rows: repeat(5, 62px);
     gap: 4px; background: #111; padding: 6px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.5);
