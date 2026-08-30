@@ -89,14 +89,16 @@
   #score-area { font-size: 1.1rem; color: #ccc; }
   #score-area span { color: #f0c040; font-weight: bold; font-size: 1.3rem; }
   #queue-area { display: flex; gap: 10px; margin-bottom: 16px; align-items: flex-end; }
-  .queue-label { font-size: 1rem; color: #888; margin-bottom: 4px; text-align: center; }
-  .queue-slot { display: flex; flex-direction: column; align-items: center; }
-  .queue-card {
-    width: 56px; height: 56px; border-radius: 10px; display: flex; align-items: center;
-    justify-content: center; font-size: 1.2rem; font-weight: bold; background: #444; color: #888; transition: all 0.3s;
-  }
-  .queue-card.active { transform: scale(1.1); box-shadow: 0 0 12px rgba(240,192,64,0.6); }
-  #col-buttons { display: flex; gap: 4px; margin-bottom: 4px; }
+.queue-label { font-size: 1rem; color: #888; margin-bottom: 4px; text-align: center; }
+.queue-slot { display: flex; flex-direction: column; align-items: center; }
+.queue-card {
+  width: 60px; height: 60px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; font-weight: bold;
+  background: #3a3a3a; color: #ddd; transition: transform 0.2s;
+}
+.queue-card.active { background: #555; color: #eee; transform: scale(1.1); }
+ #col-buttons { display: flex; gap: 4px; margin-bottom: 4px; }
    .col-btn {
     width: 64px;
     height: 60px;
@@ -359,13 +361,11 @@ function renderBoard(mergeSet) {
 
 function fontSize(v){if(v>=1000)return'0.9rem';if(v>=100)return'1rem';return'1.2rem';}
 
-function updateQueueUI(){
-  for(let i=0;i<QUEUE_SIZE;i++){
-    const el=document.getElementById(`q${i}`);if(!el)continue;
-    el.textContent=queue[i]??'';
-    el.style.background=i===0?'#555':'#333';
-    el.style.color=i===0?'#eee':'#777';
-    el.className='queue-card'+(i===0?' active':'');
+function updateQueueUI() {
+  for (let i = 0; i < QUEUE_SIZE; i++) {
+    const el = document.getElementById(`q${i}`); if (!el) continue;
+    el.textContent = queue[i] ?? '';
+    el.className = 'queue-card' + (i===0 ? ' active' : '');
   }
 }
 
