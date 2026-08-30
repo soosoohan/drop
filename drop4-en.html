@@ -410,9 +410,7 @@ function updateQueueUI() {
   for (let i = 0; i < QUEUE_SIZE; i++) {
     const el = document.getElementById(`q${i}`); if (!el) continue;
     el.textContent = queue[i] ?? '';
-    el.style.background = i===0?'#555':'#333';
-    el.style.color = i===0?'#eee':'#777';
-    el.className = 'queue-card'+(i===0?' active':'');
+    el.className = 'queue-card' + (i===0 ? ' active' : '');
   }
 }
 
