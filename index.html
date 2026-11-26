@@ -60,7 +60,14 @@
 </script>
 <script src="https://soosooland.com/js/protection.js"></script>
 <style>
-   :root {--content-width: 680px;}
+   :root {
+  --content-width: 800px;
+  --tb-bg: #1a1a2e;
+  --tb-border: #666;
+  --tb-text: #ddd;
+  --tb-active-bg: #e8e8e8;
+  --tb-active-text: #222;
+  }
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
@@ -71,45 +78,59 @@
     padding: 30px 20px 60px;
   }
 
-.back-button { position: fixed;  top: max(48px, env(safe-area-inset-top) + 20px);  left: 22px;  width: 44px; height: 44px; padding: 0; background: transparent; order: none; border-radius: 22%; cursor: pointer; z-index: 100; overflow: hidden; box-shadow: 0 2px 6px rgba(0,0,0,0.25); }
 
-.back-button img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+.toolbar {
+  width: 800px;
+  max-width: 100%;
+  margin: 0 auto 8px;
+  padding: 6px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  background: var(--tb-bg);
+  border: 1px solid var(--tb-border);
+  border-radius: 12px;
 }
 
-.back-button:active {
-    transform: scale(0.92);
-    transition: transform 0.1s;
+.back-button {
+  margin-left: 44px;
+  flex-shrink: 0;
+  width: 44px; height: 44px; padding: 0;
+  background: transparent; border: none;
+  border-radius: 22%; cursor: pointer; overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
 }
 
-  #lang-toggle {
-    position: fixed;
-    top: 16px;
-    right: 16px;
-    background: #2a2a4a;
-    border: 1px solid #444;
+ .back-button img {width: 100%;height: 100%;object-fit: cover;display: block;}
+
+ .back-button:active {transform: scale(0.92);transition: transform 0.1s;}
+
+
+#lang-toggle {
+    display: flex;
+    background: #fce9dc;
+    border: 1px solid #2a2a4a;
     border-radius: 20px;
     padding: 6px 14px;
-    color: #f0c040;
+    color: #2a2a4a;
     font-size: 0.85rem;
     cursor: pointer;
     z-index: 100;
+    gap: 4px;
     transition: background 0.2s;
   }
-  #lang-toggle:hover { background: #3a3a6a; }
 
   .lang-ko, .lang-en { transition: opacity 0.2s; }
   body.en .lang-ko { display: none; }
   body.ko .lang-en { display: none; }
 
   header {
-    text-align: center;
-    margin-bottom: 40px;
-    padding-top: 20px;
-  }
+  text-align: center;
+  margin: 0 auto 40px;
+  padding-top: 20px;
+  max-width: 800px;
+}
 
 .banner-title {
     margin: 0;
@@ -126,7 +147,7 @@
 }
   /* ── 공통 카드 섹션 ── */
   .info-card {
-    max-width: 680px;
+    max-width: 800px;
     margin: 0 auto 28px;
     background: #fce9dc;
     border-radius: 15px;
@@ -184,7 +205,7 @@
 
   /* 게임 선택 버튼 */
   .selection-container {
-    max-width: 680px;
+    max-width: 800px;
     margin: 0 auto 28px;
   }
   .selection-row {
@@ -245,27 +266,31 @@
     font-size: 0.8rem;
     margin-top: 30px;
   }
-  @media (max-width: 480px) {
-  .back-button { top: max(30px, env(safe-area-inset-top) + 10px); left: 10px;  width: 40px; height: 40px; }
-}
+header { display: flow-root; height: auto !important; }
+.banner-title { height: auto !important; }
+.banner-title img { position: static !important; float: none !important; }
 
 </style>
 </head>
 
 <body class="ko" onload="initLanguage()">
-<button class="back-button" onclick="location.href='https://soosooland.com/'" aria-label="수수랜드 홈으로">
-<img src="https://soosooland.com/images/home.png" alt="수수랜드 홈">
-</button>
+<link rel="stylesheet" href="toolbar.css">
 
+<div class="toolbar">
+  <button class="back-button" onclick="location.href='https://soosooland.com/'" aria-label="수수랜드 홈으로">
+  <img src="https://soosooland.com/images/home.png" alt="수수랜드 홈">
+</button>
+  <div class="lang-toggle">
 <button id="lang-toggle" onclick="toggleLang()">English</button>
+ </div><!--lang-toggle  -->
+</div> <!-- .toolbar -->
 
 <header>
-<h1 class="lang-ko banner-title"><img src="winterbanner.png" alt="넘드롭스"></h1>
-<h1 class="lang-en banner-title"><img src="winterbanner.png" alt="NumDrops"></h1>
+<h1 class="lang-ko banner-title"><img src="https://soosooland.com/drop/winterbanner.png" alt="넘드롭스"></h1>
+<h1 class="lang-en banner-title"><img src="https://soosooland.com/drop/winterbanner.png" alt="NumDrops"></h1>
   
 </header>
 
-<!-- 게임 소개 -->
 <div class="info-card">
   <h2 class="lang-ko">넘드롭스는 무엇인가?</h2>
   <h2 class="lang-en">What is NumDrops?</h2>
